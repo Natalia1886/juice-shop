@@ -18,7 +18,7 @@ jobs:
         # El pipeline continuará para generar el reporte completo
         continue-on-error: true
 
-  sca_scan:
+sca_scan:
     name: Análisis de Composición / Dependencias (SCA)
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +28,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+      - name: Instalar dependencias
+        run: npm install
       - name: Escaneo de Dependencias con Snyk (SCA)
         uses: snyk/actions/node@master
         continue-on-error: true
